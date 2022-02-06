@@ -9,7 +9,7 @@ class App extends Component {
     super();
     this.state = {
       robots: [],
-      SearchBox: "",
+      searchField: "",
     };
   }
 
@@ -20,16 +20,13 @@ class App extends Component {
   }
 
   onSearchChange = (event) => {
-    this.setState({ searchChange: event.target.value.toLowerCase() });
+    this.setState({ searchField: event.target.value.toLowerCase() });
   };
 
   render() {
-    const {robots, searchChange } = this.state;
+    const {robots, searchField } = this.state;
     const filteredRobots = robots.filter((robot) => {
-      return robot.name
-        .toString()
-        .toLowerCase()
-        .includes(searchChange);
+      return robot.name.toString().toLowerCase().includes(searchField);
     });
     return !robots.length ? 
      <h1>Loading</h1> :
@@ -38,7 +35,7 @@ class App extends Component {
         <h1 className="f2">RoboFriends</h1>
         <SearchBox searchChange={this.onSearchChange} />
         <Scroll>
-        <CardList robots={filteredRobots} />
+          <CardList robots={filteredRobots} />
         </Scroll>
       </div>
     );
