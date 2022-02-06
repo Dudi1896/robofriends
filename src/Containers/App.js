@@ -24,13 +24,13 @@ class App extends Component {
   };
 
   render() {
-    const {robots, searchField } = this.state;
+    const { robots, searchField } = this.state;
     const filteredRobots = robots.filter((robot) => {
       return robot.name.toString().toLowerCase().includes(searchField);
     });
-    return !robots.length ? 
-     <h1>Loading</h1> :
-     (
+    return !robots.length ? (
+      <h1>Loading</h1>
+    ) : (
       <div className="tc">
         <h1 className="f2">RoboFriends</h1>
         <SearchBox searchChange={this.onSearchChange} />
